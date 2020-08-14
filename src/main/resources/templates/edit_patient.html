@@ -14,6 +14,10 @@
             method="post">
  
             <table border="0" cellpadding="10">
+            	<tr>
+                    <td>Prescription ID:</td>
+                    <td><input type="text" th:field="*{id}" readonly="readonly" /></td>
+                </tr>
                 <tr>
                     <td>Prescription Date:</td>
                     <td><input type="date" th:field="*{prescription_date}" class="form-control"/></td>
@@ -36,11 +40,11 @@
                 </tr>
                 <tr>
                     <td>Diagnosis:</td>
-                    <td> <textarea name="diagnosis" rows="6" cols="30" th:text="${diagnosis}"></textarea></td>
+                    <td><input type="text" th:field="*{diagnosis}" class="form-control"/></td>
                 </tr> 
                 <tr>
                     <td>Medicines:</td>
-                     <td> <textarea name="medicines" rows="6" cols="30" th:text="${medicines}"></textarea></td>
+                     <td><input type="text" th:field="*{medicines}" class="form-control"/></td>
                 </tr> 
                  <tr>
                     <td>Next Visit Date:</td>

@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+
 import org.springframework.web.servlet.ModelAndView;
+
 
 import com.example.prescription_generation.Patient;
 import com.example.prescription_generation.PatientService;
@@ -37,7 +38,7 @@ public class appController {
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String savePatient(@ModelAttribute("patient") @Validated Patient patient) {
+	public String savePatient(@ModelAttribute("patient")  Patient patient) {
 	    service.save(patient);
 	     
 	    return "redirect:/";
@@ -79,7 +80,7 @@ public class appController {
 	PatientRepository rep;
 	@RequestMapping("/report")
 	public String re() {
-	    System.out.println(service.countTotalPatientByPrescription_date());
+	    //System.out.println(service.countTotalPatientByPrescription_date());
 	    return "outer";
 	}
 	

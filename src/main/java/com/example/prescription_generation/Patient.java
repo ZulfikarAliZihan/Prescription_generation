@@ -19,17 +19,23 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 @Entity
 public class Patient {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
      private String patient_name;
      private int age;
      private String gender;
      private String diagnosis;
      private String medicines;
+     @JsonFormat(pattern = "yyyy-MM-dd",shape = Shape.STRING)
+ 	 private String prescription_date;
+     @JsonFormat(pattern = "yyyy-MM-dd",shape = Shape.STRING)
+ 	 @Nullable
+ 	 private String next_visit_date=null;
+     
 	public Patient() {
 		
 	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}
@@ -37,9 +43,7 @@ public class Patient {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	@JsonFormat(pattern = "yyyy-MM-dd",shape = Shape.STRING)
-	private String prescription_date;
+
 	
 	public String getPrescription_date() {
 		return prescription_date;
@@ -77,9 +81,7 @@ public class Patient {
 	public void setMedicines(String medicines) {
 		this.medicines = medicines;
 	}
-	@JsonFormat(pattern = "yyyy-MM-dd",shape = Shape.STRING)
-	@Nullable
-	private String next_visit_date=null;
+	
 	public String getNext_visit_date() {
 		return next_visit_date;
 	}
