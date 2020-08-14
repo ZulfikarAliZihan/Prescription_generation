@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Prescription List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1 align="center">Prescription List</h1>
+    <br/><br/>
+    <a href="/new"class="btn btn-primary btn-sm mb-3">Create New Prescription</a>
+    &nbsp;&nbsp;&nbsp;
+    <table class="table table-striped table-responsive-md">
+        <thead>
+            <tr>
+                <th>prescription Date</th>
+                <th>Patient Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Diagnosis</th>
+                <th>Medicines</th>
+                <th>Next Visit Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="patient : ${listPatients}">
+                <td th:text="${patient.prescription_date}" pattern="yyyy-MM-dd">prescription Date</td>
+                <td th:text="${patient.patient_name}">Patient Name</td>
+                <td th:text="${patient.age}">Age</td>
+                <td th:text="${patient.gender}">Gender</td>
+                <td th:text="${patient.diagnosis}">Diagnosis</td>
+                <td th:text="${patient.medicines}">Medicines</td>
+                <td th:text="${patient.next_visit_date}">Next Visit Date</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${patient.id}}" class="btn btn-primary mb-1">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${patient.id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="text-align:center"><a href="/api/v1/prescription" class="text-info">Patient API Link</a>
+    </div>
+</div>
+</body>
+</html>

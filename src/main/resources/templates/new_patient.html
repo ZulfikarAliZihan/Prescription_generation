@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<title>Create New prescription</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Create New Prescription</h1>
+        <br />
+        <form action="#" th:action="@{/save}" th:object="${patient}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>Prescription Date:</td>
+                    <td><input type="date" th:field="*{prescription_date}" class="form-control"/></td>
+                </tr>
+                <tr>
+                    <td>Patient Name:</td>
+                    <td><input type="text" th:field="*{patient_name}" class="form-control"/></td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td><input type="text" th:field="*{age}" class="form-control"/></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td><select name="gender" id="gender" class="form-control">
+						  <option value="male">Male</option>
+						  <option value="female">Female</option>
+						  <option value="other">Other</option>
+						</select></td>
+                </tr>
+                <tr>
+                    <td>Diagnosis:</td>
+                    <td> <textarea name="diagnosis" rows="6" cols="30" th:text="${diagnosis}"></textarea></td>
+                </tr> 
+                <tr>
+                    <td>Medicines:</td>
+                     <td> <textarea name="medicines" rows="6" cols="30" th:text="${medicines}"></textarea></td>
+                </tr> 
+                 <tr>
+                    <td>Next Visit Date:</td>
+                    <td><input type="date" th:field="*{next_visit_date}"  class="form-control"/></td>
+                </tr>                          
+                <tr>
+                    <td colspan="2"><button type="submit" class="btn btn-success form-control">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
